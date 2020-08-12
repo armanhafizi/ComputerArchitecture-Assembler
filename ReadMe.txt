@@ -1,0 +1,1 @@
+This code acts as an assembler, gets the code in Assembly and converts it to Binary (machine language). Feel free to contact me for more information.

@@ -1,0 +1,26 @@
+ORG 100
+BSA MVE / Subroutine Call
+HEX 200 / Source Address
+HEX 300 / Destination Address
+DEC -16 / Number of data to move
+HLT
+MVE, HEX 0 / Return address=1 01
+LDA MVE I / A= 200
+STA PT1 / PT1= 200
+ISZ MVE / Return address=1 02
+LDA MVE I / A= 300
+STA PT2 / PT2= 300
+ISZ MVE / Return address= 103
+LDA MVE I / A= -16
+STA CTR / CTR= -16
+ISZ MVE / Return address=1 04
+LOP, LDA PT1 I / A= Address 200
+STA PT2 I / Address 300
+ISZ PT1 / PT1= 201
+ISZ PT2 / PT2= 301
+ISZ CTR / CTR= -15 if 0 skip
+BUN LOP / Loop until CTR= 0
+BUN MVE I / 104  Return = HLT
+PT1, HEX ? / Source
+PT2, HEX ? / Destination
+CTR, DEC ? / Counter
